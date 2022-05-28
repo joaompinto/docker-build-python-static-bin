@@ -24,7 +24,8 @@ print("Hello world from static python")
 Create the static binary
 ```sh
 docker run --user $(id -u) -v $(pwd):/build -it build-python-bin test.py
-# Resulting binary will be at test.dist/test, rename, cleanup and check it
+
+# Resulting binary will be at test.dist/test, rename, check and cleanup
 mv test.dist/test my_static_binary
 file my_static_binary
 rm -rf test.dist/

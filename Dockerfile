@@ -23,9 +23,6 @@ RUN cp libpython$PYTHON_LIB_VER.a /usr/lib
 WORKDIR /build
 ENV LDFLAGS "-static -l:libpython3.10.a"
 
+ENV HOME=/tmp
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
-ENV HOME=/tmp
-USER 1000
-
