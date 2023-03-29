@@ -1,6 +1,6 @@
 # Based on https://github.com/xxh/xxh/blob/master/xxh-portable-musl-alpine.Dockerfile
 
-FROM alpine
+FROM alpine:latest
 
 ENV PYTHON_VER 3.10.4
 ENV PYTHON_LIB_VER 3.10
@@ -17,7 +17,7 @@ RUN wget https://www.python.org/ftp/python/$PYTHON_VER/Python-$PYTHON_VER.tgz &&
 WORKDIR Python-$PYTHON_VER
 ADD Setup.local Modules/
 RUN ./configure LDFLAGS="-static" --disable-shared
-RUN make LDFLAGS="-static" LINKFORSHARED=" "
+RUN make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
 RUN cp libpython$PYTHON_LIB_VER.a /usr/lib
 
 WORKDIR /build
