@@ -1,6 +1,6 @@
 # Build a static binary from a Python script
 
-The Docker image availbale on this repository allows to build Linux static binaries from python scripts/applications. This binaries should run fine on any Linux system (x64 only).
+The Docker image available on this repository allows to build Linux static binaries from python scripts/applications. This binaries should run fine on any Linux system (x64 only).
 
 The binary is built using [Nuitka] together with a Python 3.10 static build.
 
@@ -16,7 +16,7 @@ Create the docker image
 docker build . -t build-python-bin
 ```
 
-Create an hello world script (test.py)
+Create a hello world script (test.py)
 ```python
 print("Hello world from static python")
 ```
