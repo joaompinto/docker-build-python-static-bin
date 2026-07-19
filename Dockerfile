@@ -2,12 +2,12 @@
 
 FROM alpine:latest
 
-ENV PYTHON_VER 3.10.4
-ENV PYTHON_LIB_VER 3.10
+ENV PYTHON_VER=3.10.4
+ENV PYTHON_LIB_VER=3.10
 
 RUN apk update && apk add --update musl-dev gcc python3-dev py3-pip chrpath git vim mc wget make openssh-client patchelf
 
-RUN pip3 install Nuitka --no-cache
+RUN pip3 install Nuitka --no-cache --break-system-packages
 
 
 RUN mkdir /build /package
@@ -21,7 +21,7 @@ RUN make -j$(nproc) LDFLAGS="-static" LINKFORSHARED=" "
 RUN cp libpython$PYTHON_LIB_VER.a /usr/lib
 
 WORKDIR /build
-ENV LDFLAGS "-static -l:libpython3.10.a"
+ENV LDFLAGS="-static -l:libpython3.10.a"
 
 ENV HOME=/tmp
 COPY entrypoint.sh /entrypoint.sh
