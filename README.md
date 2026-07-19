@@ -16,7 +16,7 @@ Create the docker image
 docker build . -t build-python-bin
 ```
 
-Create a hello world script (test.py)
+Create an hello world script (test.py)
 ```python
 print("Hello world from static python")
 ```
